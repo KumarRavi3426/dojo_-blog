@@ -1,16 +1,16 @@
 {
   "blogs": [
     {
-      "id": "493f",
-      "title": "Opening party",
-      "body": "Lorem doesn't work here",
-      "author": "yoshi"
+      "id": "fb85",
+      "title": "blog1",
+      "body": "fd",
+      "author": "mario"
     },
     {
-      "id": "13f0",
-      "title": "another one",
-      "body": "dj khalid",
-      "author": "mario"
+      "id": "7163",
+      "title": "bojo",
+      "body": "it's gonna work",
+      "author": "yoshi"
     }
   ]
 }
