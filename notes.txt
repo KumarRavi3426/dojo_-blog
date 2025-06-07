@@ -15,17 +15,31 @@ compiler bable converts jsx into html
 we use className in jsx instead of class, because we are in a javascript file
 In older versions < 17 we need to import React from 'react'
 exporting the component function and then import where we use want to it
-while returning a 
+while returning a jsx, we can only return a single parent element, so we wrap all the elements in a div
+we can also use react fragments to avoid using a div _ <React.Fragment></React.Fragment>
+or 
+we can also use a self closing tag <></>, to avoid using a div
 
 lec 4
 can write js before returning the jsx in component function
-dynamic values need to be written in {} inside jsx but for html inside script tag we use ${}
+dynamic values need to be written in {} inside jsx
+
+Template Literals ${}
+Template literals are a feature of ES6 that allow you to embed expressions within string literals using ${}. They are enclosed by backticks (`) instead of single or double quotes.
+
 react converts everything to a string before it outputs 
 booleans and objects can't be outputed
 
 lec 5
 install simple react snippets
-stateles function component (sfc)
+stateless function component (sfc) _ props are passed as an argument to the function
+
+When to Use SFCs:
+When you do not need to manage state within the component.
+When the component's sole purpose is to render UI based on props.
+When the component does not need to access the lifecycle methods of React.
+When you want to keep your components as simple and lightweight as possible.
+
 export and import the functions to main js
 
 lec 6 
@@ -39,10 +53,14 @@ style={{
 
 lec 7
 We are in a js file and wrting jsx in it. So the functions are added as dynamic variables 
-While passing a function in dynamic value in jsx, adding paranthesis will invoke the function.
+
+======
+While passing a function in dynamic value in jsx, adding parentheses will invoke the function.
+======
+
 if you want to pass in parameters, then use anonymous function to call-back the function you want to use.
 
-Default events parameter -> a fucntion gets acces to the events parameter by default, the moment it is referenced in jsx
+Default events parameter -> a function gets access to the events parameter by default, the moment it is referenced in jsx
 
 lec 8
 usestate is used to update the state of the component in the jsx and rerender the component
@@ -50,13 +68,15 @@ state means the state of the component having a data stored in it
 See the usestate hook in w3 schools
 
 lec 10 (outptting blogs)
-while using javasceipt in jsx, we use map method to iterate through an array
+while using javascript in jsx, we use map method to iterate through an array
 
 lec 11 ( props )
 props are data or functions that can be passed into other components which will be recieved as object in other component
 
 lec 12
-== / === (triple equal to use)
+
+`==`   _ used when you want to compare values without considering their types.
+`===`  _ used when you want to ensure that both the value and the type are the same
 
 lec 14 (useeffect)
 useeffect runs a function (in which we can do anything) on every render of the component (or specified state change/ only on first render)
@@ -66,11 +86,43 @@ lec 15 (useeffect dependencies)
 we can also specify when to run the useeffect, on every render or when a certain state is changed by passing the state as an argument
 * By passing an empty array the useeffect will run only once
 
+======
+JSON vs. JavaScript Objects
+JSON:
+
+JSON is a text format for representing structured data.
+Keys must be strings enclosed in double quotes.
+Values can be strings, numbers, objects, arrays, true, false, or null.
+JavaScript Objects:
+
+JavaScript objects are more flexible and can include functions and other complex data types.
+Keys can be strings (with or without quotes) or symbols.
+Values can be any valid JavaScript expression, including functions.
+
+======
 
 lec 16 (using JSON server)
 the top level property in json file is called resource
 db.json has resource 'blog'
+
+======
 running a json server (use a new terminal) ->  npx json-server --watch data/db.json --port 8000
+
+The JSON server reads the db.json file and creates RESTful endpoints based on the structure of the JSON data. In your db.json file, you have a top-level property called blogs:
+The JSON server automatically generates RESTful endpoints for each top-level property in the db.json file. For the blogs property, the following endpoints are created:
+
+GET /blogs: Fetch all blog posts.
+GET /blogs/:id: Fetch a single blog post by ID.
+POST /blogs: Add a new blog post.
+PUT /blogs/:id: Update a blog post by ID.
+DELETE /blogs/:id: Delete a blog post by ID.
+
+Summary
+The JSON server creates RESTful endpoints based on the structure of the db.json file.
+The /blogs endpoint is used to fetch all blog posts from the blogs property in the db.json file.
+By specifying http://localhost:8000/blogs, you are telling the useFetch hook to fetch data from the blogs endpoint hosted on port 8000.
+======
+
 it provides us with endpoints
 
 lec 17
@@ -101,17 +153,18 @@ switch component surrounds all the routes
 if we don't surround all our routes with switch, we might end up with more than one components being loaded at the same time
 
 lec 22
-if we use property path, route starts looking for the path from the start and as soon as finds the first word is matched it loads that component
-use exact-path instead 
+if we use property `path`, route starts looking for the path from the start and as soon as finds the first word is matched it loads that component
+use `exact-path` instead 
 
 lec 23
 anchor tags send a new request to server, whereas we want the react to handle the request iteself
+
 Use Link tag instead of a(anchor) tag
 Also the property 'href' will change to 'to'
 import { Link } from 'react-router-dom'; -> to be imported where your links are present
 
 lec 24
-when we switch from create to home to create quickly, what happens is that useFetch of Home is running in background, and we it tries to update state but now the home is not mounted.
+when we switch from 'create' to 'home' to again 'create' quickly, what happens is that useFetch of Home is running in background, and we it tries to update state but now the home is not mounted.
 so we need to stop the fetch when home is not mounted
 watch again
 
@@ -120,7 +173,7 @@ Route parameters are changeable part in the route, and for each different value 
 create a new route /blogs/:id -> sign that a parameter is used is denoted by a ':'
 
 useParams -> to grab the id (parameter) from route
-backticks are used to embed a templelate literal, to include js expressions inside string using ${} 
+backticks are used to embed a template literal, to include js expressions inside string using ${} 
 
 lec 29
 Json server automatically creates an id
@@ -129,3 +182,4 @@ lec 30
 can be done by importing useHistory
 history.go(-1)
 history.push("url")
+

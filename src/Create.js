@@ -9,22 +9,22 @@ const Create = () => {
     const history = useHistory();
 
     const handleSubmit = (e) => {
-        e.preventDefault();
-        const blog = { title, body, author };
-        setIsPending(true);
+      e.preventDefault(); // used to prevent the default action of an event from occurring. In this case, it is used to prevent the default form submission behavior when the form is submitted.
+      const blog = { title, body, author };
+      setIsPending(true);
 
-        setTimeout(() => {
-            fetch('http://localhost:8000/blogs', {
-                method: 'POST',
-                headers: { "Content-type": "application/json" },
-                body: JSON.stringify(blog)
-            }).then(() => {
-                console.log("Blog added");
-                setIsPending(false);
-                // history.go(-1);
-                history.push('/');
-            })
-        }, 1000)
+      setTimeout(() => {
+        fetch("http://localhost:8000/blogs", {
+          method: "POST",
+          headers: { "Content-type": "application/json" },
+          body: JSON.stringify(blog),
+        }).then(() => {
+          console.log("Blog added");
+          setIsPending(false);
+          // history.go(-1);
+          history.push("/");
+        });
+      }, 1000);
     }
     return (
         <div className="create">
